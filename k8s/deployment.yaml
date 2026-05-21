@@ -16,7 +16,7 @@ spec:
       imagePullSecrets:
         - name: portfolio
       containers:
-        - name: portfolio
+        - name: ghcr-secret
           image: ghcr.io/origa2001/portfolio:v2
           ports:
             - containerPort: 80
