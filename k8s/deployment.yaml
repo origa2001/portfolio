@@ -13,6 +13,8 @@ spec:
       labels:
         app: portfolio
     spec:
+      imagePullSecrets:
+        - name: portfolio
       containers:
         - name: portfolio
           image: ghcr.io/origa2001/portfolio:v1
