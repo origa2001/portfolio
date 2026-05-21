@@ -17,6 +17,6 @@ spec:
         - name: portfolio
       containers:
         - name: portfolio
-          image: ghcr.io/origa2001/portfolio:v1
+          image: ghcr.io/origa2001/portfolio:v2
           ports:
             - containerPort: 80
