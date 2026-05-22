@@ -1,14 +1,286 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olga Galsan | DevOps Engineer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olga Galsan | DevOps & Cloud Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #080c14; --bg2: #0d1321; --bg3: #111927;
+    --border: rgba(99,179,237,0.12); --border2: rgba(99,179,237,0.22);
+    --green: #63b3ed; --green2: #90cdf4; --green3: rgba(99,179,237,0.08);
+    --text: #a0aec0; --text2: #cbd5e0; --text3: #e2e8f0;
+    --mono: 'DM Mono', monospace; --sans: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+  .grid-bg { position: fixed; inset: 0; background-image: linear-gradient(rgba(99,179,237,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(99,179,237,0.03) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none; z-index: 0; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(8,12,20,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: var(--mono); font-size: 14px; color: var(--green); letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-family: var(--mono); font-size: 12px; color: var(--text); text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 100%; height: 1px; background: var(--green); transition: right 0.3s ease; }
+  .nav-links a:hover { color: var(--green2); }
+  .nav-links a:hover::after { right: 0; }
+  section { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 100px 48px; }
+  #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 120px; }
+  .hero-eyebrow { font-family: var(--mono); font-size: 13px; color: var(--green); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards; }
+  .hero-name { font-size: clamp(42px, 7vw, 80px); font-weight: 600; color: var(--text3); line-height: 1.05; letter-spacing: -1px; margin-bottom: 12px; opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards; }
+  .hero-role { font-size: clamp(24px, 4vw, 48px); font-weight: 300; color: var(--text); line-height: 1.15; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.8s ease 0.6s forwards; }
+  .cursor { display: inline-block; width: 3px; height: 0.85em; background: var(--green); margin-left: 4px; vertical-align: middle; animation: blink 1s step-end infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  .hero-desc { max-width: 520px; font-size: 16px; color: var(--text); margin-bottom: 44px; opacity: 0; animation: fadeUp 0.8s ease 0.8s forwards; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.8s ease 1s forwards; }
+  .btn { font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; padding: 14px 28px; border-radius: 3px; transition: all 0.2s; cursor: pointer; display: inline-block; }
+  .btn-outline { border: 1px solid var(--green); color: var(--green); background: transparent; }
+  .btn-outline:hover { background: rgba(99,179,237,0.1); transform: translateY(-2px); }
+  .btn-ghost { border: 1px solid var(--border2); color: var(--text2); background: transparent; }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  .live-badge { display: inline-flex; align-items: center; gap: 10px; margin-top: 48px; padding: 10px 18px; border: 1px solid var(--border); border-radius: 3px; font-family: var(--mono); font-size: 11px; color: var(--text); letter-spacing: 0.5px; background: var(--green3); opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: livepulse 2s ease-in-out infinite; }
+  @keyframes livepulse { 0%,100%{box-shadow:0 0 0 0 rgba(99,179,237,0.5)} 50%{box-shadow:0 0 0 5px rgba(99,179,237,0)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+  .section-header { display: flex; align-items: center; gap: 18px; margin-bottom: 56px; }
+  .section-num { font-family: var(--mono); font-size: 13px; color: var(--green); letter-spacing: 1px; }
+  .section-header h2 { font-size: 26px; font-weight: 500; color: var(--text3); letter-spacing: -0.3px; }
+  .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .about-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; align-items: start; }
+  .about-text p { margin-bottom: 18px; font-size: 15.5px; color: var(--text); }
+  .tech-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; list-style: none; margin-top: 20px; }
+  .tech-list li { font-family: var(--mono); font-size: 12.5px; color: var(--text2); padding: 4px 0 4px 16px; position: relative; }
+  .tech-list li::before { content: '▸'; position: absolute; left: 0; color: var(--green); font-size: 10px; }
+  .certs-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 24px; position: sticky; top: 100px; }
+  .certs-card h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 2px; color: var(--green); text-transform: uppercase; margin-bottom: 20px; }
+  .cert-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-icon { width: 32px; height: 32px; border-radius: 4px; background: var(--green3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .cert-name { font-size: 13px; color: var(--text2); line-height: 1.4; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .skill-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 20px 22px; transition: border-color 0.25s, transform 0.25s; }
+  .skill-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+  .skill-cat { font-family: var(--mono); font-size: 10px; letter-spacing: 2px; color: var(--green); text-transform: uppercase; margin-bottom: 14px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stag { font-family: var(--mono); font-size: 11.5px; color: var(--text); background: var(--bg3); border: 1px solid var(--border); padding: 3px 9px; border-radius: 3px; transition: all 0.2s; }
+  .stag:hover { border-color: var(--green); color: var(--green); }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: var(--border); }
+  .job { position: relative; margin-bottom: 56px; padding-left: 12px; }
+  .job::before { content: ''; position: absolute; left: -32px; top: 8px; width: 9px; height: 9px; border-radius: 50%; background: var(--green); border: 2px solid var(--bg); box-shadow: 0 0 10px rgba(99,179,237,0.4); }
+  .job-meta { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+  .job-title { font-size: 18px; font-weight: 500; color: var(--text3); }
+  .job-company { color: var(--green); }
+  .job-date { font-family: var(--mono); font-size: 12px; color: var(--text); }
+  .job-bullets { list-style: none; margin-top: 14px; }
+  .job-bullets li { position: relative; padding-left: 18px; margin-bottom: 8px; font-size: 14.5px; color: var(--text); }
+  .job-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--green); font-size: 10px; top: 5px; }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 14px; transition: all 0.25s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); opacity: 0; transition: opacity 0.3s; }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-5px); }
+  .project-card:hover::before { opacity: 1; }
+  .project-top { display: flex; justify-content: space-between; align-items: center; }
+  .project-icon { font-size: 26px; line-height: 1; }
+  .project-link { font-family: var(--mono); font-size: 11px; color: var(--green); text-decoration: none; letter-spacing: 1px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px; transition: all 0.2s; }
+  .project-link:hover { border-color: var(--green); background: var(--green3); }
+  .project-name { font-size: 16px; font-weight: 500; color: var(--text3); }
+  .project-desc { font-size: 13.5px; color: var(--text); line-height: 1.75; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  #contact { text-align: center; }
+  .contact-inner { max-width: 520px; margin: 0 auto; }
+  .contact-inner p { font-size: 16px; margin-bottom: 36px; }
+  .social-row { display: flex; justify-content: center; gap: 32px; margin-top: 56px; flex-wrap: wrap; }
+  .social-link { font-family: var(--mono); font-size: 12px; letter-spacing: 1.5px; color: var(--text); text-decoration: none; text-transform: uppercase; transition: color 0.2s; position: relative; }
+  .social-link::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 100%; height: 1px; background: var(--green); transition: right 0.3s ease; }
+  .social-link:hover { color: var(--green); }
+  .social-link:hover::after { right: 0; }
+  footer { position: relative; z-index: 1; text-align: center; padding: 32px 48px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--text); letter-spacing: 0.5px; }
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    section { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; padding: 50px; background: #0d1117; color: #ffffff;">
-    <h1>🚧 Under Construction 🚧</h1>
-    <p style="font-size: 20px; color: #58a6ff;">Olga Galsan | DevOps and Cloud  Engineer</p>
-    <p style="color: #8b949e;">Something awesome is coming soon.<br>Check back shortly!</p>
+<body>
+<div class="grid-bg"></div>
+<nav>
+  <div class="nav-logo">olga.galsan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <p class="hero-eyebrow">Hello, I'm</p>
+  <h1 class="hero-name">Olga Galsan</h1>
+  <h2 class="hero-role"><span id="typed-text">DevOps & Cloud Engineer</span><span class="cursor"></span></h2>
+  <p class="hero-desc">5+ years building scalable cloud infrastructure, automating CI/CD pipelines, and deploying cloud-native systems across AWS, GCP, and Azure. Currently at <span style="color:var(--green2)">MoneyGram International</span>.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn btn-outline">View my work</a>
+    <a href="mailto:olgagalsan2020@gmail.com" class="btn btn-ghost">Get in touch</a>
+  </div>
+  <div class="live-badge">
+    <span class="live-dot"></span>
+    Live on Kubernetes &nbsp;·&nbsp; Deployed via ArgoCD &amp; GitHub Actions
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header reveal"><span class="section-num">01</span><h2>About me</h2></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a DevOps and Cloud Engineer based in <strong style="color:var(--text2)">New York, NY</strong>, passionate about building infrastructure that is reliable, secure, and frictionless for development teams. My background in accounting gave me a deep appreciation for precision and structured thinking — skills that translate directly into designing airtight systems.</p>
+      <p>Over the past five years I've worked in fintech and financial data, managing production Kubernetes clusters on EKS, architecting GitOps workflows with ArgoCD, and provisioning AI infrastructure on AWS Bedrock. I believe that if something is done manually more than once, it should be automated.</p>
+      <p>Some technologies I work with regularly:</p>
+      <ul class="tech-list">
+        <li>Kubernetes & Docker</li><li>Terraform & Ansible</li>
+        <li>AWS · GCP · Azure</li><li>GitHub Actions & Jenkins</li>
+        <li>ArgoCD & GitOps</li><li>Prometheus & Grafana</li>
+        <li>HashiCorp Vault & Doppler</li><li>Bash & Python</li>
+      </ul>
+    </div>
+    <div class="certs-card reveal">
+      <h3>Certifications</h3>
+      <div class="cert-item"><div class="cert-icon">☸</div><div class="cert-name">Certified Kubernetes Administrator (CKA)</div></div>
+      <div class="cert-item"><div class="cert-icon">☁</div><div class="cert-name">AWS Certified Solutions Architect – Associate</div></div>
+      <div class="cert-item"><div class="cert-icon">⬡</div><div class="cert-name">Terraform Certified Associate</div></div>
+      <div class="cert-item"><div class="cert-icon">◈</div><div class="cert-name">Microsoft Certified: Azure Fundamentals</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header reveal"><span class="section-num">02</span><h2>Skills</h2></div>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-cat">Cloud</div><div class="skill-tags"><span class="stag">AWS</span><span class="stag">GCP</span><span class="stag">Azure</span><span class="stag">VPC</span><span class="stag">EC2</span><span class="stag">S3</span><span class="stag">Route53</span><span class="stag">ECR</span><span class="stag">RDS</span><span class="stag">Bedrock</span></div></div>
+    <div class="skill-card reveal"><div class="skill-cat">Containers</div><div class="skill-tags"><span class="stag">Kubernetes</span><span class="stag">Docker</span><span class="stag">EKS</span><span class="stag">ECS</span><span class="stag">Helm</span><span class="stag">k3s</span></div></div>
+    <div class="skill-card reveal"><div class="skill-cat">CI/CD</div><div class="skill-tags"><span class="stag">GitHub Actions</span><span class="stag">Jenkins</span><span class="stag">ArgoCD</span><span class="stag">GitOps</span></div></div>
+    <div class="skill-card reveal"><div class="skill-cat">IaC</div><div class="skill-tags"><span class="stag">Terraform</span><span class="stag">Ansible</span><span class="stag">Packer</span></div></div>
+    <div class="skill-card reveal"><div class="skill-cat">Monitoring</div><div class="skill-tags"><span class="stag">Prometheus</span><span class="stag">Grafana</span><span class="stag">Datadog</span><span class="stag">CloudWatch</span></div></div>
+    <div class="skill-card reveal"><div class="skill-cat">Security & other</div><div class="skill-tags"><span class="stag">Vault</span><span class="stag">Doppler</span><span class="stag">SonarQube</span><span class="stag">Veracode</span><span class="stag">Bash</span><span class="stag">Python</span><span class="stag">Linux</span></div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-header reveal"><span class="section-num">03</span><h2>Experience</h2></div>
+  <div class="timeline">
+    <div class="job reveal">
+      <div class="job-meta">
+        <div class="job-title">DevOps Engineer &nbsp;@&nbsp; <span class="job-company">MoneyGram International</span></div>
+        <div class="job-date">Jan 2021 – Present</div>
+      </div>
+      <ul class="job-bullets">
+        <li>Maintained and troubleshot containerized applications across Kubernetes clusters on EKS/ECS, ensuring uptime and scalability for cloud-native microservices.</li>
+        <li>Designed and maintained CI/CD pipelines integrated with ArgoCD for GitOps-based deployments, improving deployment consistency and eliminating manual steps.</li>
+        <li>Implemented full monitoring stack with Prometheus, Grafana, and Datadog — including custom dashboards for Kubernetes metrics and application health.</li>
+        <li>Built custom Terraform modules to automate provisioning of AWS compute, networking, and database components.</li>
+        <li>Managed secure secrets handling across CI/CD workflows and Kubernetes environments using Doppler and HashiCorp Vault.</li>
+        <li>Integrated testing into CI/CD pipelines (unit, SonarQube, Veracode, image signing and scanning), improving code quality and bug detection speed.</li>
+        <li>Automated Slack alerts for CI/CD pipeline inactivity during business hours, improving operational visibility.</li>
+      </ul>
+    </div>
+    <div class="job reveal">
+      <div class="job-meta">
+        <div class="job-title">Cloud Engineer &nbsp;@&nbsp; <span class="job-company">Morningstar</span></div>
+        <div class="job-date">Jan 2020 – Dec 2021</div>
+      </div>
+      <ul class="job-bullets">
+        <li>Designed and managed scalable AWS architectures using VPC, EC2, Route53, S3, CloudWatch, SNS, ECR, KMS, and RDS.</li>
+        <li>Built and maintained CI/CD pipelines with Jenkins and automated cloud infrastructure on GCP using Terraform.</li>
+        <li>Automated nightly database backups for Docker Compose deployments to Google Cloud Storage with a 30-day retention policy.</li>
+        <li>Improved image promotion pipeline reliability by implementing configurable retry logic with backoff for retagging and pushing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-header reveal"><span class="section-num">04</span><h2>Projects</h2></div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-top"><div class="project-icon">⚙️</div><a href="https://github.com/origa2001/portfolio" target="_blank" class="project-link">GitHub ↗</a></div>
+      <div class="project-name">This Portfolio</div>
+      <div class="project-desc">Built and deployed using a production-grade DevOps pipeline. k3s Kubernetes on DigitalOcean, ArgoCD for GitOps continuous delivery, GitHub Actions for CI/CD, NGINX Ingress, and cert-manager with Let's Encrypt TLS. Every git push triggers an automatic build and deploy — zero manual steps.</div>
+      <div class="project-tags"><span class="stag">Kubernetes</span><span class="stag">ArgoCD</span><span class="stag">GitHub Actions</span><span class="stag">Docker</span><span class="stag">NGINX</span><span class="stag">cert-manager</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-top"><div class="project-icon">🤖</div></div>
+      <div class="project-name">AI Chatbot Infrastructure</div>
+      <div class="project-desc">Provisioned AWS Bedrock (non-prod) using Terraform modules and built CI/CD pipelines for an internal AI monorepo with GitHub Actions and ArgoCD. Enabled modular, agent-based chatbot architecture with secure secret handling via Doppler, supporting LLM experimentation in a sandboxed environment.</div>
+      <div class="project-tags"><span class="stag">AWS Bedrock</span><span class="stag">Terraform</span><span class="stag">GitHub Actions</span><span class="stag">ArgoCD</span><span class="stag">Doppler</span></div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-top"><div class="project-icon">📱</div></div>
+      <div class="project-name">Android Build Automation</div>
+      <div class="project-desc">Automated the React Native Android build process using Yarn-based scripts and CLI workflows. Enabled QA engineers to generate APKs independently, reducing reliance on frontend engineers and significantly accelerating testing cycles.</div>
+      <div class="project-tags"><span class="stag">React Native</span><span class="stag">Yarn</span><span class="stag">CI/CD</span><span class="stag">Automation</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header reveal" style="justify-content:center"><span class="section-num">05</span><h2>Get in touch</h2></div>
+  <div class="contact-inner reveal">
+    <p>I'm open to new opportunities and always happy to connect. Whether you have a role in mind, a question, or just want to talk DevOps — my inbox is open.</p>
+    <a href="mailto:olgagalsan2020@gmail.com" class="btn btn-outline">Say hello ↗</a>
+    <div class="social-row">
+      <a href="https://www.linkedin.com/in/olgagalsan/" target="_blank" class="social-link">LinkedIn</a>
+      <a href="https://github.com/origa2001" target="_blank" class="social-link">GitHub</a>
+      <a href="https://olgagalsan.com" class="social-link">olgagalsan.com</a>
+    </div>
+  </div>
+</section>
+
+<footer>Designed &amp; built by Olga Galsan &nbsp;·&nbsp; Deployed on Kubernetes &nbsp;·&nbsp; New York, NY</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  const phrases = ['DevOps & Cloud Engineer','Kubernetes Specialist','Infrastructure Architect','CI/CD Automation Expert','GitOps Practitioner'];
+  let phraseIndex = 0, charIndex = 0, deleting = false;
+  const typedEl = document.getElementById('typed-text');
+  function type() {
+    const current = phrases[phraseIndex];
+    if (deleting) {
+      typedEl.textContent = current.substring(0, charIndex--);
+      if (charIndex < 0) { deleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 400); return; }
+      setTimeout(type, 40);
+    } else {
+      typedEl.textContent = current.substring(0, charIndex++);
+      if (charIndex > current.length) { setTimeout(() => { deleting = true; type(); }, 2400); return; }
+      setTimeout(type, 65);
+    }
+  }
+  setTimeout(type, 1800);
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--green)' : ''; });
+  });
+</script>
 </body>
 </html>
