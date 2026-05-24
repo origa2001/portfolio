@@ -17,6 +17,6 @@ spec:
         - name: ghcr-secret
       containers:
         - name: portfolio
-          image: ghcr.io/origa2001/portfolio:cde7889d90184191440f7e4b150fbba710344db6
+          image: ghcr.io/origa2001/portfolio:a1d9d9538ff5ef9b747a97df4d9cbdb430a33b99
           ports:
             - containerPort: 80
